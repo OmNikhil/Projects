@@ -1,0 +1,9 @@
+FROM node:22.14.0
+
+WORKDIR /angularapp
+
+RUN npm install -g @angular/cli
+COPY . .
+RUN npm install
+
+ENTRYPOINT [ "ng","serve" ]
