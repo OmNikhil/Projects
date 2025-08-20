@@ -16,12 +16,12 @@ public class TodoApi {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/getTodos")
     public List<TodoModel> getTodos() {
         return service.getAllTodos();
     }
 
-    @PostMapping
+    @PostMapping("/addTodo")
     public TodoModel addTodo(@RequestBody TodoModel todo) {
         return service.addTodo(todo);
     }
