@@ -21,35 +21,35 @@ export class AppComponent {
   }
 
   getTodos() {
-    this.http.get<{ id: number; task: string; done: boolean }[]>(this.url).subscribe(res => {
+  this.http.get<{ id: number; task: string; done: boolean }[]>(`${this.url}/getTodos`)
+    .subscribe(res => {
       this.todos = res;
     });
-  }
+}
 
-  onSubmit() {
-    if (this.newTodo.trim()) {
-      if (this.isEdit && this.editId !== null) {
-        
-        const updated = {
-          task: this.newTodo,
-          done: this.todos.find(t => t.id === this.editId)?.done || false
-        };
+// ✅ Add new todo
+onSubmit() {
+  if (this.newTodo.trim()) {
+    if (this.isEdit && this.editId !== null) {
+      const updated = {
+        task: this.newTodo,
+        done: this.todos.find(t => t.id === this.editId)?.done || false
+      };
 
-        this.http.put(`${this.url}/${this.editId}`, updated).subscribe(() => {
-          this.getTodos();
-          this.resetForm();
-        });
+      this.http.put(`${this.url}/${this.editId}`, updated).subscribe(() => {
+        this.getTodos();
+        this.resetForm();
+      });
 
-      } else {
-        const newItem = { task: this.newTodo, done: false };
-        this.http.post(this.url, newItem).subscribe(() => {
-          this.getTodos();
-          this.newTodo = '';
-        });
-      }
+    } else {
+      const newItem = { task: this.newTodo, done: false };
+      this.http.post(`${this.url}/addTodo`, newItem).subscribe(() => {
+        this.getTodos();
+        this.newTodo = '';
+      });
     }
   }
-
+}
   toggleDone(id: number) {
     const todo = this.todos.find(t => t.id === id);
     if (todo) {

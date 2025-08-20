@@ -15,14 +15,15 @@
   <ul class="todo-list">
     @for (todo of todos; track $index) {
       <li >
-        <input
+        <!-- <input
           type="checkbox"
           [checked]="todo.done"
           (change)="onCheckboxChange(todo.id, $event)"
-        />
+        /> -->
         <span>
           {{ todo.task }}
         </span>
+
         <div class="actions">
           <button class="edit" (click)="editTodo(todo.id)">Edit</button>
           <button class="delete" (click)="deleteTodo(todo.id)">Delete</button>
