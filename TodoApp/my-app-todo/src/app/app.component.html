@@ -15,11 +15,11 @@
   <ul class="todo-list">
     @for (todo of todos; track $index) {
       <li >
-        <!-- <input
+        <input
           type="checkbox"
           [checked]="todo.done"
-          (change)="onCheckboxChange(todo.id, $event)"
-        /> -->
+          (change)="onCheckboxChange(todo.id, $index)"
+        />
         <span>
           {{ todo.task }}
         </span>
