@@ -5,6 +5,5 @@ WORKDIR /app
 COPY . .
 
 # ENTRYPOINT [ "./mvnw", "clean install" ]
-
 ENTRYPOINT [ "./mvnw", "spring-boot:run" ]
 
