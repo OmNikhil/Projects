@@ -15,7 +15,7 @@ export class AppComponent {
   isEdit = false;
   editId: number | null = null;
   private url = 'http://localhost:9090/';
-
+  
   constructor(private http: HttpClient) {
     this.getTodos();
   }
