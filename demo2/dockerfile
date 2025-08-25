@@ -5,7 +5,6 @@ WORKDIR /app
 COPY . .
 
 # # ENTRYPOINT [ "./mvnw", "clean install" ]
-# ENTRYPOINT [ "./mvnw", "spring-boot:run" ]
+ENTRYPOINT [ "./mvnw", "spring-boot:run" ]
 
 
-ENTRYPOINT [ "java", "-Dspring.profiles.active=postgres", "org.springframework.boot.loader.launch.JarLauncher" ]
